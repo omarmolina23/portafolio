@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/full-screen": "^3.12.0",
     "@tailwindcss/vite": "^4.0.5",
     "astro": "^5.2.5",
     "tailwindcss": "^4.0.5"
