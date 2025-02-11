@@ -1,0 +1,17 @@
+---
+export interface Props {
+    src: string;
+}
+
+const { src } = Astro.props;
+---
+
+<div class="my-6">
+    <h2 class="text-2xl font-semibold mb-4">Ver documento PDF</h2>
+    <div class="border border-gray-300 rounded-lg overflow-hidden">
+      <iframe
+        src={src}
+        class="w-full h-[500px]"
+        title="Documento PDF"></iframe>
+    </div>
+  </div>
