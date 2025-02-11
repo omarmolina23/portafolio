@@ -1,109 +1,47 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Title from "../../components/activities/Title.astro";
-import Imagen from "../../components/activities/Imagen.astro";
-import AutorFecha from "../../components/activities/AutorFecha.astro";
-import PdfViewer from "../../components/activities/PdfViewer.astro";
+import Actividad from "../../components/Actividad.astro";
 
 const actividadData = {
-  title: "Modelos de ciclo de vida del software",
-  date: "09/02/2025",
-  author: "Omar David Jaimes Molina",
-  sections: [
-    {
-      title: "Modelo de cascada",
-      paragraphs: [
-        "El modelo de la cascada, a veces llamado ciclo de vida clásico, sugiere un enfoque sistemático y secuencial para el desarrollo del software, que comienza con la especificación de los requerimientos por parte del cliente y avanza a través de planeación, modelado, construcción y despliegue, para concluir con el apoyo del software terminado (Pressman, 2010).",
-      ],
-    },
-    {
-      title: "Modelo en V",
-      paragraphs: [
-        "Una variante de la representación del modelo de la cascada se denomina modelo en V. Se aprecia la relación entre las acciones para el aseguramiento de la calidad y aquellas asociadas con la comunicación, modelado y construcción temprana. A medida que el equipo de software avanza hacia abajo desde el lado izquierdo de la V, los requerimientos básicos del problema mejoran hacia representaciones técnicas cada vez más detalladas del problema y de su solución.",
-
-        "En cada fase de desarrollo se incluyen niveles de pruebas asociados. En este modelo las pruebas comienzan lo más pronto posible, para descubrir rápidamente los posibles errores y no esperar al final para mejorarlo.",
-      ],
-    },
-    {
-      title: "Modelos de proceso incremental",
-      paragraphs: [
-        "El desarrollo incremental se basa en la idea de diseñar una implementación inicial, exponer ésta al comentario del usuario, y luego desarrollarla en sus diversas versiones hasta producir un sistema adecuado (Sommerville, 2011).",
-
-        "El modelo de proceso incremental se centra en que en cada incremento se entrega un producto que ya opera. Los primeros incrementos son versiones desnudas del producto final, pero proporcionan capacidad que sirve al usuario y también le dan una plataforma de evaluación (Pressman, 2010).",
-      ],
-    },
-    {
-      title: "Modelos de proceso evolutivo",
-      paragraphs: [
-        "Modelo de proceso diseñado explícitamente para adaptarse a un producto que evoluciona con el tiempo. Los modelos evolutivos son iterativos. Se caracterizan por la manera en la que permiten desarrollar versiones cada vez más completas del software (Pressman, 2010).",
-
-        "El paradigma de hacer prototipos comienza con la comunicación. Usted se reúne con otros participantes para definir los objetivos generales del software, identifica cualesquiera requerimientos que conozca y detecta las áreas en las que es imprescindible una mayor definición. Se planea rápidamente una iteración para hacer el prototipo, y se lleva a cabo el modelado. Éste se centra en la representación de aquellos aspectos del software que serán visibles para los usuarios finales. El diseño rápido lleva a la construcción de un prototipo. Éste se entrega y es evaluado por los participantes, que dan retroalimentación para mejorar los requerimientos. La iteración ocurre a medida de que el prototipo es afinado para satisfacer las necesidades de distintos participantes, y al mismo tiempo le permite a usted entender mejor lo que se necesita hacer.",
-      ],
-    },
-    {
-      title: "Modelo de espiral",
-      paragraphs: [
-        "El modelo de espiral combina los pequeños ciclos repetidos del modelo iterativo con el flujo secuencial y lineal del modelo de cascada para dar prioridad al análisis de riesgos. Puede usar el modelo de espiral para garantizar la actualización y mejora graduales del software mediante la creación de prototipos en cada fase (Amazon Web Services, Inc., s.f.).",
-
-        "El modelo de espiral es adecuado para proyectos grandes y complejos que requieren cambios frecuentes. Sin embargo, puede ser costoso para proyectos pequeños con objetivos muy concretos.",
-      ],
-    },
-    {
-      title: "Modelo Ágil",
-      paragraphs: [
-        "El modelo ágil dispone las fases del SDLC (Ciclo de vida de desarrollo de software) en varios ciclos de desarrollo. El equipo itera a través de las fases rápidamente y solo se hacen pequeños cambios progresivos de software en cada ciclo. Los requisitos, planes y resultados se evalúan continuamente para responder con rapidez a los cambios. El modelo ágil es iterativo y progresivo, por lo que es más eficiente que otros modelos de procesos (Amazon Web Services, Inc., s.f.).",
-
-        "Los ciclos rápidos de desarrollo permiten a los equipos identificar y abordar problemas en proyectos complejos desde el principio y antes de que se conviertan en problemas graves. También promueven la participación de los clientes y las partes interesadas para que den su opinión en todo el ciclo de vida del proyecto. Sin embargo, depender en exceso de la opinión de los clientes puede hacer que los objetivos cambien drásticamente o dejar el proyecto a medias.",
-      ],
-    },
-  ],
+  title: "Sistemas de información",
+  srcImage: "/imagenesActividades/sistema_informacion.jpeg",
+  srcDoc:
+    "/docsActividades/consulta_sistemas_informacion_1152263_1152277_1152280.pdf",
+  alt: "Imagen de sistemas de información",
+  date: "10/02/2025",
+  author: "Bryan Alejandro Vera Osorio",
 };
 ---
 
-<Layout>
-  <main class="container mx-auto my-6 px-6 max-w-5xl">
-    <!-- Título centrado -->
-    <Title title={actividadData.title} />
+<Actividad
+  title={actividadData.title}
+  srcImage={actividadData.srcImage}
+  srcDoc={actividadData.srcDoc}
+  alt={actividadData.alt}
+  date={actividadData.date}
+  author={actividadData.author}
+>
+  <!-- Sección de contenido -->
 
-    <!-- Imagen con borde y sombra -->
-    <Imagen
-      src="/imagenesActividades/ciclo_vida_software.jpeg"
-      alt="Imagen del artículo"
-    />
+  <section class="prose prose-lg text-black mt-10">
+    <div class="flex items-center justify-center mb-4">
+      <h1 class="text-3xl font-bold mb-2">
+        ¿Qué es un sistema de información?
+      </h1>
+    </div>
+    <p class="text-justify text-lg leading-relaxed mb-8">
+      Los sistemas de información permiten recoger y manejar de la mejor forma
+      todos los datos con los que cuenta una empresa. Existen diferentes tipos
+      que van a poder adaptarse a las necesidades de cada sector y de las áreas
+      que componen cada organización (OBS Business School, s.f.).
+    </p>
 
-    <!-- Autor y fecha centrados -->
-    <AutorFecha author={actividadData.author} date={actividadData.date} />
-
-    <!-- Sección de contenido -->
-
-    <section class="prose prose-lg text-black mt-10">
-      <div class="flex items-center justify-center mb-4">
-        <h1 class="text-3xl font-bold mb-2">
-          ¿Qué son los modelos prescriptivos?
-        </h1>
-      </div>
-      <p class="text-justify text-lg leading-relaxed mb-8">
-        Los modelos de proceso prescriptivo fueron propuestos originalmente para
-        poner orden en el caos del desarrollo de software (Pressman, 2010).
-      </p>
-    </section>
-
-    <section class="prose prose-lg text-black mt-6">
-      {
-        actividadData.sections.map((section, index) => (
-          <div class="mb-6">
-            <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
-            {section.paragraphs.map((parrafo, i) => (
-              <p class="text-justify leading-relaxed mb-7">{parrafo}</p>
-            ))}
-          </div>
-        ))
-      }
-    </section>
-
-    <!-- 📄 Visualización de PDF -->
-    <PdfViewer
-      src="/docsActividades/consulta_sdlc_1152263_1152277_1152280.pdf"
-    />
-  </main>
-</Layout>
+    <p class="text-justify text-lg leading-relaxed mb-8">
+      Es un conjunto organizado de componentes que recoge, procesa, almacena y
+      distribuye información para apoyar la toma de decisiones, la coordinación,
+      el control, el análisis y la visualización en una organización. En estos
+      componentes que se recolectan, se incluyen el hardware, el software, los
+      datos, los procedimientos y las personas que interactúan entre sí con el
+      objetivo de cumplir una función específica (OBS Business School, s.f.).
+    </p>
+  </section>
+</Actividad>

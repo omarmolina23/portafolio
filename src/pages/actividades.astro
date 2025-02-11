@@ -5,18 +5,26 @@ import ActividadCard from "../components/cards/ActividadCard.astro";
 const articles = [
   {
     title: "Modelos de ciclo de vida del software",
-    description: "Los modelos de proceso prescriptivo fueron propuestos originalmente para poner orden en el caos del desarrollo de software (Pressman, 2010).",
+    description:
+      "Los modelos de proceso prescriptivo fueron propuestos originalmente para poner orden en el caos del desarrollo de software (Pressman, 2010).",
     imageUrl: "/imagenesActividades/ciclo_vida_software.jpeg",
-    link: "/actividades/ciclo_vida_software"
+    link: "/actividades/ciclo_vida_software",
   },
-]
+  {
+    title: "Sistemas de información",
+    description: "Los sistemas de información permiten recoger y manejar de la mejor forma todos los datos con los que cuenta una empresa (OBS Business School, s.f.).",
+    imageUrl: "/imagenesActividades/sistema_informacion.jpeg",
+    link: "/actividades/sistemas_informacion",
+  }
+];
 ---
 
 <Layout>
-    <div class="flex justify-center items-center mt-6 mb-10">
-        <h1 class="text-3xl font-bold">Actividades de Análisis y Diseño de Sistemas</h1>
-      </div>
-  
+  <div class="flex justify-center items-center mt-8 mb-6">
+    <h1 class="text-3xl font-bold">
+      Actividades de Análisis y Diseño de Sistemas
+    </h1>
+  </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
     {
@@ -29,6 +37,5 @@ const articles = [
         />
       ))
     }
-    
   </div>
 </Layout>

@@ -7,8 +7,12 @@ export interface Props {
 const { src, alt } = Astro.props;
 ---
 
-<div
-  class="flex justify-center my-6 overflow-hidden rounded-lg border-2 border-gray-400 shadow-lg"
->
-  <img src={src} alt={alt} class="max-w-full h-auto rounded-lg" />
-</div>
+<figure class="flex justify-center my-6 overflow-hidden rounded-lg border-2 border-gray-500 shadow-lg aspect-video">
+  <img
+    src={src}
+    alt={alt}
+    class="w-full h-full object-cover rounded-lg"
+    loading="lazy"
+    decoding="async"
+  />
+</figure>
