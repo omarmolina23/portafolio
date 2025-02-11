@@ -1,0 +1,14 @@
+---
+export interface Props {
+  author: string;
+  date: string;
+}
+
+const { author, date } = Astro.props;
+---
+
+<div class="flex items-center justify-center gap-4 text-sm text-gray-600">
+  <p>{author}</p>
+  <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+  <p>{date}</p>
+</div>

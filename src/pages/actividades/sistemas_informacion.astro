@@ -1,11 +1,12 @@
 ---
-import Actividad from "../../components/Actividad.astro";
+import Layout from "../../layouts/Layout.astro";
+import Title from "../../components/activities/Title.astro";
+import Imagen from "../../components/activities/Imagen.astro";
+import AutorFecha from "../../components/activities/AutorFecha.astro";
+import PdfViewer from "../../components/activities/PdfViewer.astro";
 
 const actividadData = {
   title: "Modelos de ciclo de vida del software",
-  srcImage: "/imagenesActividades/ciclo_vida_software.jpeg",
-  srcDoc: "/docsActividades/consulta_sdlc_1152263_1152277_1152280.pdf",
-  alt: "Imagen del ciclo de vida del software",
   date: "09/02/2025",
   author: "Omar David Jaimes Molina",
   sections: [
@@ -59,38 +60,50 @@ const actividadData = {
 };
 ---
 
-<Actividad
-  title={actividadData.title}
-  srcImage={actividadData.srcImage}
-  srcDoc={actividadData.srcDoc}
-  alt={actividadData.alt}
-  date={actividadData.date}
-  author={actividadData.author}
->
-  <!-- Sección de contenido -->
+<Layout>
+  <main class="container mx-auto my-6 px-6 max-w-5xl">
+    <!-- Título centrado -->
+    <Title title={actividadData.title} />
 
-  <section class="prose prose-lg text-black mt-10">
-    <div class="flex items-center justify-center mb-4">
-      <h1 class="text-3xl font-bold mb-2">
-        ¿Qué son los modelos prescriptivos?
-      </h1>
-    </div>
-    <p class="text-justify text-lg leading-relaxed mb-8">
-      Los modelos de proceso prescriptivo fueron propuestos originalmente para
-      poner orden en el caos del desarrollo de software (Pressman, 2010).
-    </p>
-  </section>
+    <!-- Imagen con borde y sombra -->
+    <Imagen
+      src="/imagenesActividades/ciclo_vida_software.jpeg"
+      alt="Imagen del artículo"
+    />
 
-  <section class="prose prose-lg text-black mt-6">
-    {
-      actividadData.sections.map((section, index) => (
-        <div class="mb-6">
-          <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
-          {section.paragraphs.map((parrafo, i) => (
-            <p class="text-justify leading-relaxed mb-7">{parrafo}</p>
-          ))}
-        </div>
-      ))
-    }
-  </section>
-</Actividad>
+    <!-- Autor y fecha centrados -->
+    <AutorFecha author={actividadData.author} date={actividadData.date} />
+
+    <!-- Sección de contenido -->
+
+    <section class="prose prose-lg text-black mt-10">
+      <div class="flex items-center justify-center mb-4">
+        <h1 class="text-3xl font-bold mb-2">
+          ¿Qué son los modelos prescriptivos?
+        </h1>
+      </div>
+      <p class="text-justify text-lg leading-relaxed mb-8">
+        Los modelos de proceso prescriptivo fueron propuestos originalmente para
+        poner orden en el caos del desarrollo de software (Pressman, 2010).
+      </p>
+    </section>
+
+    <section class="prose prose-lg text-black mt-6">
+      {
+        actividadData.sections.map((section, index) => (
+          <div class="mb-6">
+            <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
+            {section.paragraphs.map((parrafo, i) => (
+              <p class="text-justify leading-relaxed mb-7">{parrafo}</p>
+            ))}
+          </div>
+        ))
+      }
+    </section>
+
+    <!-- 📄 Visualización de PDF -->
+    <PdfViewer
+      src="/docsActividades/consulta_sdlc_1152263_1152277_1152280.pdf"
+    />
+  </main>
+</Layout>
