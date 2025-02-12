@@ -1,8 +1,40 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ActividadCard from "../components/cards/ActividadCard.astro";
+import { articles } from "../utils/actividadesData.ts";
+import { members } from "../utils/integrantesData.ts";
+
+const recentArticles = articles
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 1);
 ---
 
-<Layout> 
-    <h1 class="text-3xl font-bold underline">Astro</h1>
-    <p>Loren</p>       
+<Layout>
+  <div class="flex justify-center items-center mt-8 mb-6">
+    <h1 class="text-3xl font-bold">Actividad más reciente</h1>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+    {
+      recentArticles.map((article) => (
+        <ActividadCard
+          title={article.title}
+          description={article.description}
+          imageUrl={article.imageUrl}
+          link={article.link}
+        />
+      ))
+    }
+  </div>
+  <div class="flex -space-x-2 overflow-hidden">
+    {
+      members.map((member) => (
+        <img
+          class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+          src={`https://github.com/${member.user}.png`}
+          alt={`Avatar de ${member.name}`}
+        />
+      ))
+    }
+  </div>
 </Layout>

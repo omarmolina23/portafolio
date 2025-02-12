@@ -1,22 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { articles } from "../utils/actividadesData.ts";
 import ActividadCard from "../components/cards/ActividadCard.astro";
 
-const articles = [
-  {
-    title: "Modelos de ciclo de vida del software",
-    description:
-      "Los modelos de proceso prescriptivo fueron propuestos originalmente para poner orden en el caos del desarrollo de software (Pressman, 2010).",
-    imageUrl: "/imagenesActividades/ciclo_vida_software.jpeg",
-    link: "/actividades/ciclo_vida_software",
-  },
-  {
-    title: "Sistemas de información",
-    description: "Los sistemas de información permiten recoger y manejar de la mejor forma todos los datos con los que cuenta una empresa (OBS Business School, s.f.).",
-    imageUrl: "/imagenesActividades/sistema_informacion.jpeg",
-    link: "/actividades/sistemas_informacion",
-  }
-];
+
 ---
 
 <Layout>
