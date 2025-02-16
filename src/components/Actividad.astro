@@ -11,19 +11,20 @@ export interface Props {
   srcDoc: string;
   alt: string;
   author: string;
+  authorUser: string;
   date: string;
 }
 
-const { title, srcImage, srcDoc, alt, author, date} = Astro.props;
+const { title, srcImage, srcDoc, alt, author, authorUser, date } = Astro.props;
 ---
 
 <Layout>
   <main class="container mx-auto my-6 px-6 max-w-5xl">
     <Title title={title} />
     <Imagen src={srcImage} alt={alt} />
-    <AutorFecha author={author} date={date} />
+    <AutorFecha author={author} authorUser={authorUser} date={date} />
     <div class="content">
-      <slot></slot>
+      <slot />
     </div>
     <PdfViewer src={srcDoc} />
   </main>
