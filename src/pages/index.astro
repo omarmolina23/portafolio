@@ -1,8 +1,67 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ActividadCard from "../components/cards/ActividadCard.astro";
+import { articles } from "../utils/actividadesData.ts";
+import { members } from "../utils/integrantesData.ts";
+
+const recentArticles = articles
+  .slice()
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 1);
 ---
 
-<Layout> 
-    <h1 class="text-3xl font-bold underline">Astro</h1>
-    <p>Loren</p>       
+<Layout>
+  <div class="flex flex-col justify-center items-center mt-8 mb-6">
+    <h1 class="text-3xl font-bold mb-6">Actividad más reciente</h1>
+    <div class="flex justify-center items-center max-w-2xl mx-auto">
+      {
+        recentArticles.map((article) => (
+          <ActividadCard
+            title={article.title}
+            description={article.description}
+            imageUrl={article.imageUrl}
+            link={article.link}
+            author={article.author.name}
+            authorUser={article.author.user}
+          />
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto p-14 mt-8 mb-8">
+    <h1 id="nosotros" class="text-3xl font-bold text-center mb-6">
+      Nuestro Equipo
+    </h1>
+    <div class="grid md:grid-cols-3 gap-6">
+      {
+        members.map((member) => (
+          <div class="bg-white p-4 rounded-2xl shadow-lg text-center">
+            <a href={member.github} target="_blank" rel="noopener noreferrer">
+              <img
+                src={`https://github.com/${member.user}.png`}
+                alt={`Foto de ${member.name}`}
+                class="w-24 h-24 mx-auto rounded-full mb-4 border-4 border-gray-300 hover:border-blue-500 transition duration-300"
+              />
+            </a>
+            <h2 class="text-xl font-semibold">{member.name}</h2>
+            <p class="text-gray-600">{member.code}</p>
+            <p class="text-gray-600">{member.rol}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="flex -space-x-2 overflow-hidden">
+    {
+      members.map((member) => (
+        <img
+          class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+          src={`https://github.com/${member.user}.png`}
+          alt={`Avatar de ${member.name}`}
+        />
+      ))
+    }
+  </div>
 </Layout>

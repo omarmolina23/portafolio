@@ -1,13 +1,8 @@
 ---
 import Actividad from "../../components/Actividad.astro";
-
+import { articles } from "../../utils/actividadesData";
 const actividadData = {
-  title: "Modelos de ciclo de vida del software",
-  srcImage: "/imagenesActividades/ciclo_vida_software.jpeg",
-  srcDoc: "/docsActividades/consulta_sdlc_1152263_1152277_1152280.pdf",
-  alt: "Imagen del ciclo de vida del software",
-  date: "09/02/2025",
-  author: "Omar David Jaimes Molina",
+  article: articles.find((article) => article.slug === "ciclo_vida_software"),
   sections: [
     {
       title: "Modelo de cascada",
@@ -60,12 +55,13 @@ const actividadData = {
 ---
 
 <Actividad
-  title={actividadData.title}
-  srcImage={actividadData.srcImage}
-  srcDoc={actividadData.srcDoc}
-  alt={actividadData.alt}
-  date={actividadData.date}
-  author={actividadData.author}
+  title={actividadData.article?.title || "Título de la actividad"}
+  srcImage={actividadData.article?.imageUrl || "/miscellany/gato.jpg"}
+  srcDoc={actividadData.article?.docUrl || ""}
+  alt={actividadData.article?.imageAlt || "Imagen de la actividad"}
+  date={actividadData.article?.date || "1969-01-01"}
+  author={actividadData.article?.author.name || "Autor de la actividad"}
+  authorUser={actividadData.article?.author.user || "autor"}
 >
   <!-- Sección de contenido -->
 
