@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/layout.css";
 import Navbar from "../components/Navbar.astro";
 ---
 
@@ -15,7 +16,11 @@ import Navbar from "../components/Navbar.astro";
     <title>Portafolio</title>
   </head>
   <body>
-    <Navbar />
-    <slot />
+    <div class="layout">
+      <Navbar />
+      <main class="content">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
