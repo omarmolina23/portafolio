@@ -1,0 +1,14 @@
+---
+import { members } from "../utils/integrantesData.ts";
+---
+<div class="fixed bottom-4 right-4 flex -space-x-2 overflow-hidden bg-white p-2 rounded-full shadow-lg">
+  {
+    members.map((member) => (
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src={`https://github.com/${member.user}.png`}
+        alt={`Avatar de ${member.name}`}
+      />
+    ))
+  }
+</div>

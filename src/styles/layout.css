@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Oculta el scrollbar global */
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1; /* Ocupa el espacio restante */
+    overflow-y: auto; /* Habilita el scroll solo en el contenido */
+    padding: 20px; /* Añade un poco de espacio alrededor del contenido */
+}

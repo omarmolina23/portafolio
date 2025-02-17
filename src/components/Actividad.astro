@@ -4,6 +4,7 @@ import Title from "../components/activities/Title.astro";
 import Imagen from "./activities/Imagen.astro";
 import AutorFecha from "./activities/AutorFecha.astro";
 import PdfViewer from "./activities/PdfViewer.astro";
+import Avatars from "../components/Avatars.astro";
 
 export interface Props {
   title: string;
@@ -28,4 +29,5 @@ const { title, srcImage, srcDoc, alt, author, authorUser, date } = Astro.props;
     </div>
     <PdfViewer src={srcDoc} />
   </main>
+  <Avatars />
 </Layout>

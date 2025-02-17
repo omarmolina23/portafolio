@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import ActividadCard from "../components/cards/ActividadCard.astro";
 import { articles } from "../utils/actividadesData.ts";
 import { members } from "../utils/integrantesData.ts";
+import Avatars from "../components/Avatars.astro";
 
 const recentArticles = articles
   .slice()
@@ -11,8 +12,8 @@ const recentArticles = articles
 ---
 
 <Layout>
-  <div class="flex flex-col justify-center items-center mt-8 mb-6">
-    <h1 class="text-3xl font-bold mb-6">Actividad más reciente</h1>
+  <div class="flex flex-col justify-center items-center mt-4 mb-6">
+    <h1 class="text-2xl font-bold mb-6">Actividad más reciente</h1>
     <div class="flex justify-center items-center max-w-2xl mx-auto">
       {
         recentArticles.map((article) => (
@@ -30,7 +31,7 @@ const recentArticles = articles
   </div>
 
   <div class="max-w-4xl mx-auto p-14 mt-8 mb-8">
-    <h1 id="nosotros" class="text-3xl font-bold text-center mb-6">
+    <h1 id="nosotros" class="text-2xl font-bold text-center mb-6">
       Nuestro Equipo
     </h1>
     <div class="grid md:grid-cols-3 gap-6">
@@ -53,17 +54,5 @@ const recentArticles = articles
     </div>
   </div>
 
-  <div
-    class="fixed bottom-4 right-4 flex -space-x-2 overflow-hidden bg-white p-2 rounded-full shadow-lg"
-  >
-    {
-      members.map((member) => (
-        <img
-          class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-          src={`https://github.com/${member.user}.png`}
-          alt={`Avatar de ${member.name}`}
-        />
-      ))
-    }
-  </div>
+  <Avatars />
 </Layout>
