@@ -1,0 +1,48 @@
+---
+import Actividad from "../../components/Actividad.astro";
+import { articles } from "../../utils/actividadesData";
+
+const actividadData = {
+  article: articles.find(
+    (article) => article.slug === "tendencias_desarrollo_software"
+  ),
+};
+---
+
+<Actividad
+  title={actividadData.article?.title || "Título de la actividad"}
+  srcImage={actividadData.article?.imageUrl || "/miscellany/gato.jpg"}
+  srcDoc={actividadData.article?.docUrl || ""}
+  alt={actividadData.article?.imageAlt || "Imagen de la actividad"}
+  date={actividadData.article?.date || "1969-01-01"}
+  author={actividadData.article?.author.name || "Autor de la actividad"}
+  authorUser={actividadData.article?.author.user || "autor"}
+>
+  <!-- Sección de contenido -->
+
+  <section class="prose prose-lg text-black mt-10">
+    <div class="flex items-center justify-center mb-4">
+      <h1 class="text-3xl font-bold mb-2">
+        Tendencias en el desarrollo de software
+      </h1>
+    </div>
+    <p class="text-justify text-lg leading-relaxed mb-8">
+      El desarrollo de 'software' es la arquitectura del mundo digital. Al mismo
+      tiempo que crece su relevancia, también lo hace el número de profesionales
+      que se dedican a ello: en 2022 había 31 millones de programadores en el
+      mundo, una cifra que se espera que alcance los 45 millones en 2030, de
+      acuerdo con Developer Nation Community (SYDLE, 2022).
+    </p>
+
+    <p class="text-justify text-lg leading-relaxed mb-8">
+      El desarrollo de 'software' constituye la arquitectura del mundo digital y
+      sus profesionales deben adaptarse a las últimas tendencias. Gartner,
+      Deloitte o IronHack recogen algunas de las que marcarán el 2024 (SYDLE,
+      2022).
+    </p>
+
+    <p class="text-justify text-lg leading-relaxed">
+        A la hora de crear una solución digital, los empresarios deben estar bien informados de hacia dónde se dirige la industria del software y elaborar una estrategia en consecuencia. Estas son las principales tendencias de desarrollo de software en 2024 que los empresarios deben tener en cuenta a la hora de planificar un nuevo producto (Lores, 2023).
+      </p>
+  </section>
+</Actividad>
