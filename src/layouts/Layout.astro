@@ -16,11 +16,15 @@ import Navbar from "../components/Navbar.astro";
     <title>Portafolio</title>
   </head>
   <body>
-    <div class="layout">
-      <Navbar />
-      <main class="content">
-        <slot />
-      </main>
+    <div class="layout-bg"
+      style="background-image: url('/src/assets/bg-dark.png');"
+    >
+      <div class="layout">
+        <Navbar />
+        <main class="content">
+          <slot />
+        </main>
+      </div>
     </div>
   </body>
 </html>

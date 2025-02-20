@@ -65,9 +65,9 @@ const actividadData = {
 >
   <!-- Sección de contenido -->
 
-  <section class="prose prose-lg text-black mt-6">
+  <section class="prose prose-lg text-white mt-6">
     <div class="flex items-center justify-center mb-4">
-      <h1 class="text-3xl font-bold mb-2">
+      <h1 class="text-3xl font-bold mb-2 ">
         ¿Qué son los modelos prescriptivos?
       </h1>
     </div>
@@ -77,13 +77,13 @@ const actividadData = {
     </p>
   </section>
 
-  <section class="prose prose-lg text-black mt-6">
+  <section class="prose prose-lg text-white mt-6">
     {
       actividadData.sections.map((section, index) => (
         <div class="mb-6">
           <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
           {section.paragraphs.map((parrafo, i) => (
-            <p class="text-justify leading-relaxed mb-7">{parrafo}</p>
+            <p class="text-justify leading-relaxed mb-7 text-white">{parrafo}</p>
           ))}
         </div>
       ))
