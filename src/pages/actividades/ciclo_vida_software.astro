@@ -1,6 +1,7 @@
 ---
 import Actividad from "../../components/Actividad.astro";
 import { articles } from "../../utils/actividadesData";
+
 const actividadData = {
   article: articles.find((article) => article.slug === "ciclo_vida_software"),
   sections: [
@@ -67,7 +68,7 @@ const actividadData = {
 
   <section class="prose prose-lg text-white mt-6">
     <div class="flex items-center justify-center mb-4">
-      <h1 class="text-3xl font-bold mb-2 ">
+      <h1 class="text-3xl font-bold mb-2">
         ¿Qué son los modelos prescriptivos?
       </h1>
     </div>
@@ -83,7 +84,9 @@ const actividadData = {
         <div class="mb-6">
           <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
           {section.paragraphs.map((parrafo, i) => (
-            <p class="text-justify leading-relaxed mb-7 text-white">{parrafo}</p>
+            <p class="text-justify leading-relaxed mb-7 text-white">
+              {parrafo}
+            </p>
           ))}
         </div>
       ))

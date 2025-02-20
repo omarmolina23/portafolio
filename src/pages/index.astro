@@ -5,6 +5,11 @@ import { articles } from "../utils/actividadesData.ts";
 import { members } from "../utils/integrantesData.ts";
 import Avatars from "../components/Avatars.astro";
 
+const images: Record<string, { default: { src: string } }> = import.meta.glob(
+  "/src/assets/imagenesActividades/*",
+  { eager: true }
+);
+
 const recentArticles = articles
   .slice()
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -20,7 +25,7 @@ const recentArticles = articles
           <ActividadCard
             title={article.title}
             description={article.description}
-            imageUrl={article.imageUrl}
+            imageUrl={images[`/src/assets/${article.imageUrl}`]?.default.src}
             link={article.link}
             author={article.author.name}
             authorUser={article.author.user}
