@@ -6,6 +6,13 @@ import AutorFecha from "./activities/AutorFecha.astro";
 import PdfViewer from "./activities/PdfViewer.astro";
 import Avatars from "../components/Avatars.astro";
 
+// Importamos todas las imágenes de la carpeta assets
+const images: Record<string, { default: { src: string } }> = import.meta.glob(
+  "/src/assets/imagenesActividades/*",
+  { eager: true }
+);
+
+// Definimos la interfaz de los props
 export interface Props {
   title: string;
   srcImage: string;
@@ -16,13 +23,17 @@ export interface Props {
   date: string;
 }
 
+// Extraemos los props
 const { title, srcImage, srcDoc, alt, author, authorUser, date } = Astro.props;
+
+// Resolvemos la imagen desde assets
+const resolvedImage = images[`/src/assets/${srcImage}`]?.default.src;
 ---
 
 <Layout>
   <main class="container mx-auto my-6 px-6 max-w-5xl">
     <Title title={title} />
-    <Imagen src={srcImage} alt={alt} />
+    <Imagen src={resolvedImage} alt={alt} />
     <AutorFecha author={author} authorUser={authorUser} date={date} />
     <div class="content">
       <slot />
