@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import "../styles/layout.css";
 import Navbar from "../components/Navbar.astro";
+import bgDark from "/src/assets/background/bg-dark.png";
 ---
 
 <html>
@@ -16,8 +17,11 @@ import Navbar from "../components/Navbar.astro";
     <title>Portafolio</title>
   </head>
   <body>
-    <div class="layout-bg"
-      style="background-image: url('/background/bg-dark.png');"
+    <div
+      class="layout-bg"
+      style={{
+        backgroundImage: `url(${bgDark.src})`,
+      }}
     >
       <div class="layout">
         <Navbar />

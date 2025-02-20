@@ -3,6 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import { articles } from "../utils/actividadesData.ts";
 import ActividadCard from "../components/cards/ActividadCard.astro";
 import Avatars from "../components/Avatars.astro";
+
+const images: Record<string, { default: { src: string } }> = import.meta.glob(
+  "/src/assets/imagenesActividades/*",
+  { eager: true }
+);
 ---
 
 <Layout>
@@ -18,7 +23,7 @@ import Avatars from "../components/Avatars.astro";
         <ActividadCard
           title={article.title}
           description={article.description}
-          imageUrl={article.imageUrl}
+          imageUrl={images[`/src/assets/${article.imageUrl}`]?.default.src}
           author={article.author.name}
           authorUser={article.author.user}
           link={article.link}
