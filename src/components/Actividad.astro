@@ -31,7 +31,7 @@ const resolvedImage = images[`/src/assets/${srcImage}`]?.default.src;
 ---
 
 <Layout>
-  <main class="container mx-auto my-6 px-6 max-w-5xl">
+  <main class="container mx-auto my-6 px-6 max-w-5xl backdrop-blur-2xl rounded-4xl shadow-xl">
     <Title title={title} />
     <Imagen src={resolvedImage} alt={alt} />
     <AutorFecha author={author} authorUser={authorUser} date={date} />
