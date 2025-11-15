@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { articles } from "../utils/actividadesSoftwareData.ts";
+import ActividadCard from "../components/cards/ActividadCard.astro";
+import Avatars from "../components/Avatars.astro";
+
+const images: Record<string, { default: { src: string } }> = import.meta.glob(
+  "/src/assets/imagenesActividades/*",
+  { eager: true }
+);
+---
+
+<Layout>
+  <div class="flex justify-center items-center mt-4 mb-4">
+    <h1 class="text-2xl font-bold text-white">
+      Actividades de Ingeniería de Software
+    </h1>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+    {
+      articles.map((article) => (
+        <ActividadCard
+          title={article.title}
+          description={article.description}
+          imageUrl={images[`/src/assets/${article.imageUrl}`]?.default.src}
+          author={article.author.name}
+          authorUser={article.author.user}
+          link={article.link}
+        />
+      ))
+    }
+  </div>
+  <Avatars />
+</Layout>

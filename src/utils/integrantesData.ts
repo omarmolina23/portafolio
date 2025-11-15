@@ -19,7 +19,7 @@ export const members: Member[] = [
     code: "1152280",
     rol: "Diseñador UX/UI",
     github: "https://github.com/saimeers",
-    user: "saimersaavedra",
+    user: "saimeers",
   },
   {
     name: "Omar Jaimes",

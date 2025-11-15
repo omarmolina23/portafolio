@@ -1,0 +1,21 @@
+---
+import Actividad from "../../components/Actividad.astro";
+import { articles } from "../../utils/actividadesSoftwareData";
+
+const actividadData = {
+  article: articles.find((article) => article.slug === "auditoria_gestion_configuracion_ne"),
+};
+---
+
+<Actividad
+  title={actividadData.article?.title || "Título de la actividad"}
+  srcImage={actividadData.article?.imageUrl || "/miscellany/gato.jpg"}
+  srcDoc={actividadData.article?.docUrl || ""}
+  alt={actividadData.article?.imageAlt || "Imagen de la actividad"}
+  date={actividadData.article?.date || "1969-01-01"}
+  author={actividadData.article?.author.name || "Autor de la actividad"}
+  authorUser={actividadData.article?.author.user || "autor"}
+>
+  <!-- Sección de contenido -->
+
+</Actividad>
