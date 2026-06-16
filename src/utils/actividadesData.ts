@@ -21,10 +21,10 @@ export const articles: Article[] = [
     imageUrl: "imagenesActividades/ciclo_vida_software.jpeg",
     imageAlt: "Ciclo de vida del software",
     docUrl: "/docsActividades/consulta_sdlc_1152263_1152277_1152280.pdf",
-    link: "/actividades/ciclo_vida_software",
+    link: "/systems-analysis/software-lifecycle-models",
     date: "2025-02-09",
     author: members.find((member) => member.code === "1152263")!,
-    slug: "ciclo_vida_software"
+    slug: "software-lifecycle-models"
   },
   {
     title: "Sistemas de información",
@@ -33,10 +33,10 @@ export const articles: Article[] = [
     imageUrl: "imagenesActividades/sistema_informacion-edit.png",
     imageAlt: "Sistemas de información",
     docUrl: "/docsActividades/consulta_sistemas_informacion_1152263_1152277_1152280.pdf",
-    link: "/actividades/sistemas_informacion",
+    link: "/systems-analysis/information-systems",
     date: "2025-02-10",
     author: members.find((member) => member.code === "1152277")!,
-    slug: "sistemas_informacion"
+    slug: "information-systems"
   },
   {
     title: "Tendencias del desarrollo del software",
@@ -44,9 +44,9 @@ export const articles: Article[] = [
     imageUrl: "imagenesActividades/tendencias_desarrollo_software.png",
     imageAlt: "Tendencias del desarrollo del software",
     docUrl: "/docsActividades/consulta_tendencias_desarrollo_software_1152263_1152277_1152280.pdf",
-    link: "/actividades/tendencias_desarrollo_software",
+    link: "/systems-analysis/software-development-trends",
     date: "2025-02-16",
     author: members.find((member) => member.code === "1152280")!,
-    slug: "tendencias_desarrollo_software"
+    slug: "software-development-trends"
   }
 ];
