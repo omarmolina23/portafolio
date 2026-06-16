@@ -21,10 +21,10 @@ export const articles: Article[] = [
     imageUrl: "imagenesActividades/metricas.jpg",
     imageAlt: "METRICAS SW",
     docUrl: "/docsActividades/EVALUACION METRICAS SW - EQUIPO 17 (DROGUERIANE).pdf",
-    link: "/actividades/metricas_software_ne",
+    link: "/software-engineering/software-metrics-ne",
     date: "2025-09-16",
     author: members.find((member) => member.code === "1152277")!,
-    slug: "metricas_software_ne",
+    slug: "software-metrics-ne",
   },
   {
     title: "EVALUACION METRICAS SW - EQUIPO 10 (ADELA)",
@@ -33,10 +33,10 @@ export const articles: Article[] = [
     imageUrl: "imagenesActividades/metricas.jpg",
     imageAlt: "METRICAS SW",
     docUrl: "/docsActividades/EVALUACION METRICAS SW - EQUIPO 10 (ADELA).pdf",
-    link: "/actividades/metricas_software_adela",
+    link: "/software-engineering/software-metrics-adela",
     date: "2025-09-16",
     author: members.find((member) => member.code === "1152263")!,
-    slug: "metricas_software_adela",
+    slug: "software-metrics-adela",
   },
   {
     title: "Plan de gestión de la Configuración - EQUIPO 17 (DROGUERIANE)",
@@ -44,10 +44,10 @@ export const articles: Article[] = [
     imageUrl: "imagenesActividades/configuracion.jpg",
     imageAlt: "Plan de gestión de la Configuración",
     docUrl: "/docsActividades/Plan de gestión de la Configuración - EQUIPO 17 (DROGUERIANE).pdf",
-    link: "/actividades/plan_gestion_configuracion",
+    link: "/software-engineering/configuration-management-plan",
     date: "2025-10-14",
     author: members.find((member) => member.code === "1152280")!,
-    slug: "plan_gestion_configuracion"
+    slug: "configuration-management-plan"
   },
   {
     title: "Auditoria Gestión de la Configuración - EQUIPO 17 (DROGUERIANE)",
@@ -55,10 +55,10 @@ export const articles: Article[] = [
     imageUrl: "imagenesActividades/auditoria.svg",
     imageAlt: "Auditoria Gestión de la Configuración",
     docUrl: "/docsActividades/Auditoria Gestión de la Configuración - EQUIPO 17.pdf",
-    link: "/actividades/auditoria_gestion_configuracion_ne",
+    link: "/software-engineering/configuration-audit-ne",
     date: "2025-10-24",
     author: members.find((member) => member.code === "1152277")!,
-    slug: "auditoria_gestion_configuracion_ne"
+    slug: "configuration-audit-ne"
   },
   {
     title: "Auditoria Gestión de la Configuración - EQUIPO 10 (ADELA)",
@@ -66,10 +66,10 @@ export const articles: Article[] = [
     imageUrl: "imagenesActividades/auditoria.svg",
     imageAlt: "Auditoria Gestión de la Configuración",
     docUrl: "/docsActividades/Auditoria Gestión de la Configuración - EQUIPO 10 (ADELA).pdf",
-    link: "/actividades/auditoria_gestion_configuracion_adela",
+    link: "/software-engineering/configuration-audit-adela",
     date: "2025-10-24",
     author: members.find((member) => member.code === "1152263")!,
-    slug: "auditoria_gestion_configuracion_adela"
+    slug: "configuration-audit-adela"
   }
 ];
 

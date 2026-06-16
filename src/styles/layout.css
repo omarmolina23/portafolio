@@ -7,6 +7,8 @@ body {
 }
 
 .layout {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -18,35 +20,41 @@ body {
     padding: 20px; /* Añade un poco de espacio alrededor del contenido */
 }
 
-.layout-bg { 
-    background-size: 25%;
-    background-repeat: repeat;
-    animation: bg-loop 60s linear infinite;
+/* ===========================================================
+   Fondo "Aurora Violeta": gradientes de luz sobre base oscura
+   =========================================================== */
+.layout-bg {
+    position: relative;
     min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
-  }
-  
-  @keyframes bg-loop {
-    0% {
-      background-position: 0 0;
+    background-color: var(--bg-deep, #0a0813);
+    background-image:
+        radial-gradient(60rem 60rem at 12% -8%, rgba(124, 58, 237, 0.28), transparent 60%),
+        radial-gradient(48rem 48rem at 100% 0%, rgba(217, 70, 239, 0.16), transparent 55%),
+        radial-gradient(64rem 44rem at 50% 118%, rgba(99, 102, 241, 0.20), transparent 60%);
+}
+
+/* Malla sutil que aporta textura sin distraer */
+.layout-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(ellipse 110% 85% at 50% 0%, #000 35%, transparent 100%);
+    mask-image: radial-gradient(ellipse 110% 85% at 50% 0%, #000 35%, transparent 100%);
+}
+
+@media screen and (max-width: 768px) {
+    .layout-bg {
+        background-image:
+            radial-gradient(40rem 40rem at 10% -10%, rgba(124, 58, 237, 0.30), transparent 60%),
+            radial-gradient(36rem 36rem at 100% 5%, rgba(217, 70, 239, 0.16), transparent 55%),
+            radial-gradient(44rem 32rem at 50% 120%, rgba(99, 102, 241, 0.22), transparent 60%);
     }
-    100% {
-      background-position: 100% 100vh;
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .layout {
-      background-size: 75%;
-    }
-  
-    @keyframes bg-loop {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 1000% 100vh;
-      }
-    }
-  }
+}

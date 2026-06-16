@@ -1,40 +1,114 @@
 ---
 import logo from "/src/assets/logo/systemsoft-copia.svg";
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/systems-analysis", label: "Análisis y Diseño de Sistemas" },
+  { href: "/software-engineering", label: "Ingeniería de Software" },
+];
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => {
+  const base = href.split("#")[0];
+  if (base === "/") return path === "/";
+  return path === base || path.startsWith(base + "/");
+};
 ---
-<nav class="bg-gray-900 p-3 w-screen text-white font-semibold text-md">
-  <div class="flex justify-between items-center w-full px-4">
-    <div class="flex items-center space-x-2">
-      <img src={logo.src} alt="Logo ProyectoX" class="w-8 h-8" />
-      <a
-        href="/"
-        class="text-2xl font-bold text-white hover:text-gray-300 transition duration-300"
+
+<nav
+  class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl"
+>
+  <div
+    class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6"
+  >
+    <!-- Marca -->
+    <a href="/" class="group flex shrink-0 items-center gap-2.5">
+      <span
+        class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-violet-500/30 to-fuchsia-500/20 ring-1 ring-white/15 transition group-hover:ring-violet-400/60"
+      >
+        <img src={logo.src} alt="Logo System Soft" class="h-5 w-5" />
+      </span>
+      <span
+        class="bg-gradient-to-r from-white to-violet-200 bg-clip-text text-xl font-bold tracking-tight text-transparent"
       >
         System Soft
-      </a>
-    </div>
-    <ul class="flex space-x-6">
-      <li>
-        <a href="/" class="hover:text-gray-300 transition duration-300"
-          >Inicio</a
-        >
-      </li>
-      <li>
-        <a href="/#nosotros" class="hover:text-gray-300 transition duration-300"
-          >Equipo</a
-        >
-      </li>
-      <li>
-        <a
-          href="/actividades"
-          class="hover:text-gray-300 transition duration-300">AYD</a
-        >
-      </li>
-      <li>
-        <a
-          href="/actividadesSoftware"
-          class="hover:text-gray-300 transition duration-300">ING.SOFTWARE</a
-        >
-      </li>
+      </span>
+    </a>
+
+    <!-- Enlaces (escritorio) -->
+    <ul class="hidden items-center gap-1 lg:flex">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "rounded-lg px-3 py-2 text-sm font-medium transition",
+                isActive(link.href)
+                  ? "bg-white/10 text-white ring-1 ring-violet-400/40"
+                  : "text-slate-300 hover:bg-white/5 hover:text-white",
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Botón menú (móvil) -->
+    <button
+      id="nav-toggle"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      class="inline-flex items-center justify-center rounded-lg p-2 text-slate-200 transition hover:bg-white/10 lg:hidden"
+    >
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menú desplegable (móvil) -->
+  <div id="nav-menu" class="hidden border-t border-white/10 px-4 pb-4 lg:hidden">
+    <ul class="flex flex-col gap-1 pt-2">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "block rounded-lg px-3 py-2.5 text-sm font-medium transition",
+                isActive(link.href)
+                  ? "bg-white/10 text-white ring-1 ring-violet-400/40"
+                  : "text-slate-300 hover:bg-white/5 hover:text-white",
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </nav>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("nav-menu");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+</script>
