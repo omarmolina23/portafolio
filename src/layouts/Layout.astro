@@ -5,9 +5,14 @@ import Navbar from "../components/Navbar.astro";
 import logo from "/src/assets/logo/systemsoft.svg";
 ---
 
-<html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portafolio de System Soft — actividades de Análisis y Diseño de Sistemas e Ingeniería de Software."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,15 +20,10 @@ import logo from "/src/assets/logo/systemsoft.svg";
       rel="stylesheet"
     />
     <link rel="icon" href={logo.src} />
-    <title>Portafolio</title>
+    <title>Portafolio · System Soft</title>
   </head>
   <body>
-    <div
-      class="layout-bg"
-      style={{
-        backgroundImage: `url(/background/bg-dark.png)`,
-      }}
-    >
+    <div class="layout-bg">
       <div class="layout">
         <Navbar />
         <main class="content">

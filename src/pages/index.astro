@@ -17,9 +17,37 @@ const recentArticles = articles
 ---
 
 <Layout>
-  <div class="flex flex-col justify-center items-center mt-4 mb-6">
-    <h1 class="text-2xl font-bold mb-6 text-white">Actividad más reciente</h1>
-    <div class="flex justify-center items-center max-w-2xl mx-auto">
+  <!-- Bienvenida -->
+  <section class="mx-auto max-w-3xl px-4 pt-8 pb-2 text-center">
+    <span
+      class="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-violet-200"
+    >
+      <span class="h-1.5 w-1.5 rounded-full bg-fuchsia-400"></span>
+      Portafolio académico
+    </span>
+    <h1 class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+      <span
+        class="bg-gradient-to-r from-white via-violet-200 to-fuchsia-200 bg-clip-text text-transparent"
+      >
+        System Soft
+      </span>
+    </h1>
+    <p class="mx-auto mt-4 max-w-xl text-slate-400">
+      Actividades y entregables de Análisis y Diseño de Sistemas e Ingeniería de
+      Software.
+    </p>
+  </section>
+
+  <!-- Actividad más reciente -->
+  <section class="mx-auto mt-10 mb-6 max-w-2xl px-4">
+    <div class="mb-6 text-center">
+      <h2 class="text-2xl font-bold text-white">Actividad más reciente</h2>
+      <div
+        class="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500"
+      >
+      </div>
+    </div>
+    <div class="flex justify-center">
       {
         recentArticles.map((article) => (
           <ActividadCard
@@ -33,31 +61,38 @@ const recentArticles = articles
         ))
       }
     </div>
-  </div>
+  </section>
 
-  <div class="max-w-4xl mx-auto p-14 mt-8 mb-8">
-    <h1 id="nosotros" class="text-2xl font-bold text-center mb-6 text-white">
-      Nuestro Equipo
-    </h1>
-    <div class="grid md:grid-cols-3 gap-6">
+  <!-- Equipo -->
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <div class="mb-8 text-center">
+      <h2 id="nosotros" class="scroll-mt-24 text-2xl font-bold text-white">
+        Nuestro Equipo
+      </h2>
+      <div
+        class="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500"
+      >
+      </div>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
       {
         members.map((member) => (
-          <div class="bg-white p-4 rounded-2xl shadow-lg text-center">
+          <div class="group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-violet-400/40 hover:bg-white/10">
             <a href={member.github} target="_blank" rel="noopener noreferrer">
               <img
                 src={`https://github.com/${member.user}.png`}
                 alt={`Foto de ${member.name}`}
-                class="w-24 h-24 mx-auto rounded-full mb-4 border-4 border-gray-300 hover:border-blue-500 transition duration-300"
+                class="mx-auto mb-4 h-24 w-24 rounded-full border-4 border-white/10 transition duration-300 group-hover:border-violet-500"
               />
             </a>
-            <h2 class="text-xl font-semibold">{member.name}</h2>
-            <p class="text-gray-600">{member.code}</p>
-            <p class="text-gray-600">{member.rol}</p>
+            <h3 class="text-lg font-semibold text-white">{member.name}</h3>
+            <p class="text-sm font-medium text-violet-300">{member.rol}</p>
+            <p class="mt-1 text-sm text-slate-400">{member.code}</p>
           </div>
         ))
       }
     </div>
-  </div>
+  </section>
 
   <Avatars />
 </Layout>
