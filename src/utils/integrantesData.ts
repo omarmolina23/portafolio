@@ -11,8 +11,8 @@ export const members: Member[] = [
     name: "Bryan Vera",
     code: "1152277",
     rol: "Desarrollador Backend",
-    github: "https://github.com/BryanVeraDev",
-    user: "BryanVeraDev",
+    github: "https://github.com/BryanVed",
+    user: "BryanVed",
   },
   {
     name: "Saimer Saavedra",
