@@ -3,20 +3,52 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import vercel from '@astrojs/vercel';
 import react from '@astrojs/react';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// https://astro.build/config
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const pdfWorkerSrc = path.resolve(
+    __dirname,
+    'node_modules/@pdfslick/core/node_modules/pdfjs-dist/build/pdf.worker.min.mjs'
+);
+const pdfWorkerDest = path.resolve(__dirname, 'public/pdf.worker.min.mjs');
+
+/** Vite plugin: copies the PDF.js worker to public/ with a fixed name and patches
+ *  @pdfslick/core's dynamic URL so Vercel always serves it from a known, stable path
+ *  instead of a hashed /_astro/ asset (which can have MIME-type issues on some CDNs). */
+function pdfWorkerPlugin() {
+    return {
+        name: 'pdf-worker-public',
+        buildStart() {
+            if (fs.existsSync(pdfWorkerSrc)) {
+                fs.copyFileSync(pdfWorkerSrc, pdfWorkerDest);
+            }
+        },
+        configureServer(server) {
+            // Also copy in dev so the file is available during `astro dev`
+            if (fs.existsSync(pdfWorkerSrc)) {
+                fs.copyFileSync(pdfWorkerSrc, pdfWorkerDest);
+            }
+            return undefined;
+        },
+        // Replace the dynamic import.meta.url-based worker URL with the fixed public path
+        transform(code, id) {
+            if (id.includes('@pdfslick/core') && code.includes('GlobalWorkerOptions.workerSrc')) {
+                return code.replace(
+                    /GlobalWorkerOptions\.workerSrc\s*=\s*new URL\([^)]+\)\.toString\(\)/,
+                    `GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs"`
+                );
+            }
+        },
+    };
+}
+
 export default defineConfig({
     vite: {
-        plugins: [tailwindcss()],
-        // PDFSlick usa `new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url)`
-        // para cargar el worker de PDF.js. Si Vite lo pre-empaqueta con esbuild ese
-        // patrón se rompe y el worker no arranca (el PDF no renderiza). Excluyéndolo
-        // del pre-bundle, Vite procesa el módulo y resuelve el worker correctamente.
+        plugins: [tailwindcss(), pdfWorkerPlugin()],
         optimizeDeps: {
             exclude: ["@pdfslick/react", "@pdfslick/core"],
-            // Al excluir PDFSlick, su dependencia CommonJS `use-sync-external-store`
-            // (usada por zustand) deja de tener interop ESM. La forzamos a pre-bundle
-            // para que exponga el export `default` y la isla React pueda hidratar.
             include: [
                 "use-sync-external-store/shim/with-selector",
                 "use-sync-external-store/shim/with-selector.js"
