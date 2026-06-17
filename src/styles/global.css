@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* La detección automática de Tailwind 4 no siempre escanea las islas React (.tsx)
+   durante el build de producción, por lo que las clases con valores arbitrarios
+   usadas solo ahí no se generaban. Registramos explícitamente las fuentes del src. */
+@source "../**/*.{astro,html,js,jsx,ts,tsx}";
+
 /* ===========================================================
    Paleta "Aurora Violeta" — tokens de tema
    Basada en el violeta del logo System Soft (#7216f4)

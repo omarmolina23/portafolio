@@ -37,7 +37,10 @@ export default function PdfSlickViewer({ src }: PdfSlickViewerProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             </svg>
           </button>
-          <span className="min-w-[5.5rem] text-center text-sm font-medium text-slate-300">
+          <span
+            className="text-center text-sm font-medium text-slate-300"
+            style={{ minWidth: "5.5rem" }}
+          >
             {numPages ? `${pageNumber} / ${numPages}` : "—"}
           </span>
           <button
@@ -65,7 +68,10 @@ export default function PdfSlickViewer({ src }: PdfSlickViewerProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
             </svg>
           </button>
-          <span className="min-w-[3.5rem] text-center text-sm font-medium text-slate-300">
+          <span
+            className="text-center text-sm font-medium text-slate-300"
+            style={{ minWidth: "3.5rem" }}
+          >
             {Math.round(scale * 100)}%
           </span>
           <button
@@ -94,7 +100,7 @@ export default function PdfSlickViewer({ src }: PdfSlickViewerProps) {
       </div>
 
       {/* Visor */}
-      <div className="relative h-[600px] w-full bg-slate-200">
+      <div className="relative w-full bg-slate-200" style={{ height: "600px" }}>
         {error ? (
           <div className="absolute inset-0 grid place-items-center px-6 text-center text-sm text-slate-600">
             No se pudo cargar el documento PDF.

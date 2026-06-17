@@ -1,5 +1,9 @@
 # build output
 dist/
+.vercel/
+
+# PDF.js worker copied into public/ by the Vite plugin at build time
+public/pdf.worker.min.mjs
 
 # generated types
 .astro/
